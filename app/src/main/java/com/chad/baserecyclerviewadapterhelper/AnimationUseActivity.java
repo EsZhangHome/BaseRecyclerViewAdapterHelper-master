@@ -4,15 +4,19 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.gifdecoder.GifHeader;
 import com.chad.baserecyclerviewadapterhelper.adapter.AnimationAdapter;
 import com.chad.baserecyclerviewadapterhelper.animation.CustomAnimation;
 import com.chad.baserecyclerviewadapterhelper.entity.Status;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.google.gson.Gson;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.kyleduo.switchbutton.SwitchButton;
 
@@ -26,17 +30,25 @@ public class AnimationUseActivity extends Activity {
     private AnimationAdapter mAnimationAdapter;
     private ImageView mImgBtn;
     private int mFirstPageItemCount = 3;
-
+    TextView getmap;
+    Gson gson=new Gson();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adapter_use);
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_list);
+        getmap= (TextView) findViewById(R.id.getmap);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         initAdapter();
         initMenu();
         initView();
+        getmap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("backinfo", gson.toJson(mAnimationAdapter.getmap())) ;
+            }
+        });
     }
 
     private void initView() {

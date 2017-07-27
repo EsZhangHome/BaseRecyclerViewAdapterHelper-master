@@ -1,6 +1,7 @@
 package com.chad.baserecyclerviewadapterhelper.adapter;
 
 import com.chad.baserecyclerviewadapterhelper.R;
+import com.chad.baserecyclerviewadapterhelper.base.BaseBindingViewHolder;
 import com.chad.baserecyclerviewadapterhelper.base.BaseDataBindingAdapter;
 import com.chad.baserecyclerviewadapterhelper.databinding.ItemMovieBinding;
 import com.chad.baserecyclerviewadapterhelper.entity.Movie;
@@ -20,4 +21,6 @@ public class UpFetchAdapter extends BaseDataBindingAdapter<Movie, ItemMovieBindi
     protected void convert(ItemMovieBinding binding, Movie item) {
         binding.setMovie(item);
     }
+
+
 }
